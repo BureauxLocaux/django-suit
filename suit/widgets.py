@@ -67,7 +67,7 @@ class EnclosedInput(TextInput):
         if django_version < (2, 0):
             output = super(EnclosedInput, self).render(name, value, attrs)
         else:
-            output = super(EnclosedInput, self).render(name, value, attrs, renderer)
+            output = super(EnclosedInput, self).render(name, value, attrs, renderer=renderer)
 
         div_classes = []
         if self.prepend:
@@ -100,7 +100,7 @@ class AutosizedTextarea(Textarea):
         if django_version < (2, 0):
             output = super(AutosizedTextarea, self).render(name, value, attrs)
         else:
-            output = super(AutosizedTextarea, self).render(name, value, attrs, renderer)
+            output = super(AutosizedTextarea, self).render(name, value, attrs, renderer=renderer)
 
         output += mark_safe(
             "<script type=\"text/javascript\">Suit.$('#id_%s').autosize();</script>"
@@ -121,7 +121,7 @@ class SuitDateWidget(AdminDateWidget):
         if django_version < (1, 11):
             output = super(SuitDateWidget, self).render(name, value, attrs)
         else:
-            output = super(SuitDateWidget, self).render(name, value, attrs, renderer)
+            output = super(SuitDateWidget, self).render(name, value, attrs, renderer=renderer)
         return mark_safe(
             '<div class="input-append suit-date">%s<span '
             'class="add-on"><i class="icon-calendar"></i></span></div>' %
@@ -138,7 +138,7 @@ class SuitTimeWidget(AdminTimeWidget):
         if django_version < (2, 0):
             output = super(SuitTimeWidget, self).render(name, value, attrs)
         else:
-            output = super(SuitTimeWidget, self).render(name, value, attrs, renderer)
+            output = super(SuitTimeWidget, self).render(name, value, attrs, renderer=renderer)
         return mark_safe(
             '<div class="input-append suit-date suit-time">%s<span '
             'class="add-on"><i class="icon-time"></i></span></div>' %
@@ -160,7 +160,7 @@ class SuitSplitDateTimeWidget(forms.SplitDateTimeWidget):
             return mark_safe(out_tpl % (rendered_widgets[0], rendered_widgets[1]))
     else:
         def render(self, name, value, attrs=None, renderer=None):
-            output = super(SuitSplitDateTimeWidget, self).render(name, value, attrs, renderer)
+            output = super(SuitSplitDateTimeWidget, self).render(name, value, attrs, renderer=renderer)
             return mark_safe('<div class="datetime">%s</div>' % output)
 
 
