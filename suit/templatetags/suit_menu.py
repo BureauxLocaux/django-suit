@@ -10,17 +10,12 @@ except ImportError:
     # For Django >= 2.0
     from django.urls import reverse, resolve
 
-try:
-    from django.utils.six import string_types
-except ImportError:
-    # For Django < 1.4.2
-    string_types = basestring,
-
 import re
 import warnings
 from suit.config import get_config
 from suit import utils
 
+string_types = (str,)
 register = template.Library()
 
 django_version = utils.django_major_version()

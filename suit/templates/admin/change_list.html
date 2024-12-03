@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_static admin_list admin_urls suit_list suit_tags %}
+{% load i18n static admin_list admin_urls suit_list suit_tags %}
 {% load url from suit_compat %}
 
 {% block extrastyle %}
@@ -23,15 +23,6 @@
 {% block extrahead %}
   {{ block.super }}
   {{ media.js }}
-  {% if action_form %}{% if actions_on_top or actions_on_bottom %}
-    <script type="text/javascript">
-      (function ($) {
-        $(document).ready(function ($) {
-          $("tr input.action-select").actions();
-        });
-      })(django.jQuery);
-    </script>
-  {% endif %}{% endif %}
 {% endblock %}
 
 {% block bodyclass %}change-list{% endblock %}
